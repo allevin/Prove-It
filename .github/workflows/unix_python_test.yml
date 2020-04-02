@@ -44,7 +44,7 @@ jobs:
         echo ""
         echo "Install LATEX Dependancy..."
         echo ""
-        apt install texlive
+        sudo apt-get install texlive
 
     - name: Setup Prove-It
       run: |
