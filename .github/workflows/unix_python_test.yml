@@ -37,7 +37,7 @@ jobs:
         echo ""
         echo "Using PIP To Install Prove-It Dependancies..."
         echo ""
-        pip install juypter
+        pip install jupyter
 
     - name: Install LATEX Dependency
       run: |
