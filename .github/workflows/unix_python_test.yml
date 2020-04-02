@@ -1,0 +1,63 @@
+name: GitHub CI (unix)
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  Prove-It-Unix-Tests:
+    name: ${{ matrix.TARGET }}/py${{ matrix.python-version }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        include:
+        - os: ubuntu-latest
+          TARGET: linux
+        python-version: [3.7]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v1
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: PIP Install Dependencies
+      run: |
+        echo ""
+        echo "Upgrade pip..."
+        echo ""
+        python -m pip install --upgrade pip
+        echo ""
+        echo "Using PIP To Install Prove-It Dependancies..."
+        echo ""
+        pip install juypter
+
+    - name: Install LATEX Dependency
+      run: |
+        echo "Install LATEX Dependancy..."
+        echo "TODO: Placeholder to install LATEX if needed"
+
+    - name: Setup Prove-It
+      run: |
+        echo ""
+        echo "Setting up Prove-It..."
+        echo ""
+        python setup.py develop
+        echo ""
+        echo "Performing a Prove-It build --clean..."
+        echo ""
+        python build.py --clean
+
+    - name: Run Prove-It and build Database
+      run: |
+        echo ""
+        echo "Performing a Prove-It build..."
+        echo ""
+        pyomo build.py
