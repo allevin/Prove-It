@@ -41,8 +41,10 @@ jobs:
 
     - name: Install LATEX Dependency
       run: |
+        echo ""
         echo "Install LATEX Dependancy..."
-        echo "TODO: Placeholder to install LATEX if needed"
+        echo ""
+        apt install texlive
 
     - name: Setup Prove-It
       run: |
