@@ -60,4 +60,4 @@ jobs:
         echo ""
         echo "Performing a Prove-It build..."
         echo ""
-        pyomo build.py
+        python build.py
