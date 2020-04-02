@@ -45,6 +45,10 @@ jobs:
         echo "Install LATEX Dependancy..."
         echo ""
         sudo apt-get install texlive-latex-extra
+        echo ""
+        echo "Install dvipng Dependancy..."
+        echo ""
+        sudo apt-get install dvipng
 
     - name: Setup Prove-It
       run: |
