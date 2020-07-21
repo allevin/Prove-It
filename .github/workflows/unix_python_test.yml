@@ -1,4 +1,4 @@
-name: GitHub CI (unix)
+name: GitHub CI (unix) - Prove-It
 
 on:
   push:
